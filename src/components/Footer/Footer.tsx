@@ -8,8 +8,8 @@ export function Footer() {
     {
       icon: FiPhone,
       label: "Telefone",
-      href: "tel:+5511999999999",
-      value: "+55 11 99999-9999",
+      href: "tel:+5511966325626",
+      value: "+55 11 96632-5626",
     },
     {
       icon: FiMail,

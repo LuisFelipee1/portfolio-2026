@@ -1,5 +1,6 @@
 import { useLanguage } from "../../contexts/LanguageContext";
-import { FiUser, FiHeart, FiCpu, FiTarget } from "react-icons/fi";
+import { FiHeart, FiCpu, FiTarget } from "react-icons/fi";
+import fotoLuisFelipe from "../../assets/foto_luis_felipe.jpeg";
 
 export function AboutSection() {
   const { t, language } = useLanguage();
@@ -40,7 +41,7 @@ export function AboutSection() {
         </p>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Photo placeholder */}
+          {/* Photo */}
           <div className="animate-slide-up flex justify-center lg:justify-start">
             <div className="relative group">
               {/* Glow effect */}
@@ -49,14 +50,13 @@ export function AboutSection() {
 
               <div className="relative w-64 h-64 sm:w-80 sm:h-80 rounded-2xl overflow-hidden
                               border-2 border-[#38bdf8]/20 group-hover:border-[#38bdf8]/50 
-                              transition-all duration-500 bg-gradient-to-br from-[#1a1a2e] to-[#0a0a0a]
-                              flex items-center justify-center">
-                <div className="text-center p-6">
-                  <FiUser className="w-16 h-16 text-[#38bdf8]/40 mx-auto mb-4" />
-                  <p className="text-sm" style={{ color: "var(--text-secondary)" }}>
-                    {t.sections.about.photoPlaceholder}
-                  </p>
-                </div>
+                              transition-all duration-500">
+                <img
+                  src={fotoLuisFelipe}
+                  alt="Luis Felipe Alves Fernandes"
+                  className="w-full h-full object-cover transition-transform duration-700 
+                             scale-105 group-hover:scale-115"
+                />
               </div>
             </div>
           </div>

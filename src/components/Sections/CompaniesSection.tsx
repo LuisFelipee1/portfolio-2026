@@ -127,7 +127,7 @@ export function CompaniesSection() {
                                  ring-4 ring-[#38bdf8]/20" />
 
                   {/* Card */}
-                  <div className={`w-full md:w-[calc(50%-2rem)] ml-10 md:ml-0`}>
+                  <div className="w-[calc(100%-2.5rem)] md:w-[calc(50%-2rem)] ml-10 md:ml-0">
                     <div className="card card-hover group relative overflow-hidden">
                       {/* Glow effect on hover */}
                       <div className="absolute -inset-1 bg-gradient-to-r from-[#38bdf8]/0 via-[#38bdf8]/5 to-[#38bdf8]/0 

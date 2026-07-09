@@ -66,7 +66,7 @@ export function Header() {
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             className="text-xl md:text-2xl font-bold gradient-text hover:scale-105 
-                       transition-transform duration-300"
+                       transition-transform duration-300 cursor-pointer"
           >
             LF
           </button>
@@ -78,7 +78,7 @@ export function Header() {
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
                 className="relative px-4 py-2 text-sm font-medium rounded-lg
-                           transition-all duration-300 hover:text-[#38bdf8] group"
+                           transition-all duration-300 hover:text-[#38bdf8] group cursor-pointer"
                 style={{ color: "var(--text-secondary)" }}
               >
                 {item.label}
@@ -90,7 +90,7 @@ export function Header() {
           </nav>
 
           {/* Ações - Theme + Language Toggle */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-0 sm:gap-2">
             <div className="hidden md:flex items-center gap-2">
               <ThemeToggle />
               <LanguageToggle />
@@ -100,8 +100,8 @@ export function Header() {
             <button
               onClick={toggleMobileMenu}
               aria-label={isMobileMenuOpen ? "Fechar menu" : "Abrir menu"}
-              className="md:hidden p-2.5 rounded-xl border transition-all duration-300
-                         hover:scale-110 active:scale-95
+              className="md:hidden p-2 rounded-xl border transition-all duration-300
+                         hover:scale-110 active:scale-95 cursor-pointer
                          border-[#38bdf8]/20 hover:border-[#38bdf8]/60
                          bg-white/5 dark:bg-white/5"
             >
@@ -116,17 +116,20 @@ export function Header() {
 
         {/* Menu Mobile */}
         <div
-          className={`md:hidden transition-all duration-500 ease-in-out overflow-hidden
-            ${isMobileMenuOpen ? "max-h-96 opacity-100 mt-4" : "max-h-0 opacity-0 mt-0"}
+          className={`md:hidden transition-all duration-500 ease-in-out
+            ${isMobileMenuOpen
+              ? "max-h-[500px] opacity-100 mt-4 pointer-events-auto"
+              : "max-h-0 opacity-0 mt-0 pointer-events-none"
+            }
           `}
         >
-          <nav className="glass rounded-2xl p-4 flex flex-col gap-2">
+          <nav className="glass rounded-2xl p-4 flex flex-col gap-2 -mx-1">
             {navItems.map((item, index) => (
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
                 className="w-full text-left px-4 py-3 rounded-xl text-sm font-medium
-                           transition-all duration-300 hover:text-[#38bdf8] hover:bg-[#38bdf8]/5"
+                           transition-all duration-300 hover:text-[#38bdf8] hover:bg-[#38bdf8]/5 cursor-pointer"
                 style={{
                   color: "var(--text-secondary)",
                   animation: isMobileMenuOpen

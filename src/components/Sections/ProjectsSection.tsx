@@ -1,8 +1,51 @@
 import { useLanguage } from "../../contexts/LanguageContext";
-import { FiFolder, FiGithub, FiExternalLink } from "react-icons/fi";
+import { FiGithub, FiExternalLink, FiLinkedin } from "react-icons/fi";
+
+interface Project {
+  title: string;
+  description: { pt: string; en: string };
+  repoUrl: string;
+  deployUrl?: string;
+  linkedinUrl?: string;
+  technologies: string[];
+}
 
 export function ProjectsSection() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+
+  const projects: Project[] = [
+    {
+      title: "Recipes App",
+      description: {
+        pt: "Aplicativo de receitas completo com busca, categorias, favoritos e passo a passo. Desenvolvido em equipe utilizando metodologias ágeis.",
+        en: "Complete recipe app with search, categories, favorites, and step-by-step instructions. Team-developed using agile methodologies.",
+      },
+      repoUrl: "https://github.com/LuisFelipee1/Recipes-App",
+      deployUrl: "https://recipes-app-luis.surge.sh",
+      technologies: ["React", "TypeScript", "Bootstrap", "Styled Components", "HTML", "CSS"],
+    },
+    {
+      title: "Sneaker Air Store",
+      description: {
+        pt: "Loja virtual de tênis Full Stack com Angular no front-end e Node.js no back-end. Publicação com apresentação completa no LinkedIn.",
+        en: "Full Stack sneaker store with Angular on the front-end and Node.js on the back-end. Full presentation published on LinkedIn.",
+      },
+      repoUrl: "https://github.com/LuisFelipee1/sneaker-air-store",
+      linkedinUrl:
+        "https://www.linkedin.com/in/luis-felipe-alves-fernandes-190198201/",
+      technologies: ["JavaScript", "Angular", "Bootstrap", "Node.js", "Express.js", "Prisma"],
+    },
+    {
+      title: "Portfólio Elaine",
+      description: {
+        pt: "Portfólio profissional desenvolvido para minha mãe, com design moderno, responsivo e otimizado para performance.",
+        en: "Professional portfolio developed for my mother, with modern design, responsive layout, and performance optimization.",
+      },
+      repoUrl: "https://github.com/LuisFelipee1/portfolio-mae",
+      deployUrl: "https://portfolio-elaine-xi.vercel.app",
+      technologies: ["Next.js", "TypeScript", "Tailwind CSS"],
+    },
+  ];
 
   return (
     <section id="projects" className="py-20 md:py-32 px-4 sm:px-6 lg:px-8">
@@ -12,36 +55,79 @@ export function ProjectsSection() {
           {t.sections.projects.subtitle}
         </p>
 
-        {/* Placeholder - Projetos em breve */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-          {[1, 2, 3].map((item) => (
+          {projects.map((project, index) => (
             <div
-              key={item}
-              className="card card-hover animate-scale-in group cursor-default"
-              style={{ animationDelay: `${item * 0.1}s`, animationFillMode: "both" }}
+              key={project.title}
+              className="card card-hover animate-scale-in group"
+              style={{ animationDelay: `${index * 0.1}s`, animationFillMode: "both" }}
             >
+              {/* Header */}
               <div className="flex items-center justify-between mb-4">
-                <FiFolder className="w-10 h-10 text-[#38bdf8]" />
-                <div className="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <FiGithub className="w-5 h-5" style={{ color: "var(--text-secondary)" }} />
-                  <FiExternalLink className="w-5 h-5" style={{ color: "var(--text-secondary)" }} />
+                {/* Index number */}
+                <span className="text-3xl md:text-4xl font-black text-[#38bdf8]/20 select-none">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+
+                {/* Action icons */}
+                <div className="flex gap-1 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-1 group-hover:translate-y-0">
+                  <a
+                    href={project.repoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-2 rounded-lg transition-all duration-300 hover:bg-[#38bdf8]/10 hover:text-[#38bdf8]"
+                    style={{ color: "var(--text-secondary)" }}
+                    aria-label="GitHub"
+                  >
+                    <FiGithub className="w-5 h-5" />
+                  </a>
+
+                  {project.deployUrl && (
+                    <a
+                      href={project.deployUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-2 rounded-lg transition-all duration-300 hover:bg-[#38bdf8]/10 hover:text-[#38bdf8]"
+                      style={{ color: "var(--text-secondary)" }}
+                      aria-label="Deploy"
+                    >
+                      <FiExternalLink className="w-5 h-5" />
+                    </a>
+                  )}
+
+                  {project.linkedinUrl && (
+                    <a
+                      href={project.linkedinUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-2 rounded-lg transition-all duration-300 hover:bg-[#38bdf8]/10 hover:text-[#38bdf8]"
+                      style={{ color: "var(--text-secondary)" }}
+                      aria-label="LinkedIn"
+                    >
+                      <FiLinkedin className="w-5 h-5" />
+                    </a>
+                  )}
                 </div>
               </div>
 
+              {/* Title */}
               <h3 className="text-xl font-bold mb-2" style={{ color: "var(--text-primary)" }}>
-                Projeto {item}
+                {project.title}
               </h3>
 
-              <p className="text-sm mb-4" style={{ color: "var(--text-secondary)" }}>
-                {t.sections.projects.placeholder}
+              {/* Description */}
+              <p className="text-sm mb-5 leading-relaxed" style={{ color: "var(--text-secondary)" }}>
+                {project.description[language]}
               </p>
 
+              {/* Technologies */}
               <div className="flex flex-wrap gap-2">
-                {["React", "TypeScript", "Tailwind"].map((tech) => (
+                {project.technologies.map((tech) => (
                   <span
                     key={tech}
                     className="px-3 py-1 text-xs font-medium rounded-full
-                               bg-[#38bdf8]/10 text-[#38bdf8]"
+                               bg-[#38bdf8]/10 text-[#38bdf8] transition-all duration-300
+                               hover:bg-[#38bdf8]/20 hover:scale-105"
                   >
                     {tech}
                   </span>

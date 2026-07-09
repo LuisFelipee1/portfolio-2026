@@ -10,7 +10,7 @@ export function LanguageToggle() {
       aria-label={language === "pt" ? "Mudar para Inglês" : "Switch to Portuguese"}
       title={language === "pt" ? "Mudar para Inglês" : "Switch to Portuguese"}
       className="relative p-2.5 rounded-xl border transition-all duration-300 
-                 hover:scale-110 active:scale-95 group overflow-hidden
+                 hover:scale-110 active:scale-95 group overflow-hidden cursor-pointer
                  border-[#38bdf8]/20 hover:border-[#38bdf8]/60
                  bg-white/5 dark:bg-white/5"
     >

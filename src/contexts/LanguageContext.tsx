@@ -18,7 +18,7 @@ export function LanguageProvider({ children }: LanguageProviderProps) {
   const [language, setLanguage] = useState<Language>(() => {
     const stored = localStorage.getItem("@portfolio:language");
     if (stored === "en" || stored === "pt") return stored;
-    return "pt";
+    return "en";
   });
 
   useEffect(() => {
