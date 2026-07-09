@@ -1,5 +1,5 @@
 import { useLanguage } from "../../contexts/LanguageContext";
-import { FiBriefcase, FiCalendar, FiMapPin } from "react-icons/fi";
+import { FiCalendar, FiMapPin } from "react-icons/fi";
 
 interface Company {
   name: string;
@@ -114,11 +114,12 @@ export function CompaniesSection() {
               return (
                 <div
                   key={company.name}
-                  className={`relative flex flex-col md:flex-row items-start gap-6 md:gap-12 animate-slide-up`}
+                  className={`relative flex flex-col items-start gap-6 md:gap-12 animate-slide-up
+                    ${isLeft ? "md:flex-row" : "md:flex-row-reverse"}
+                  `}
                   style={{
                     animationDelay: `${index * 0.2}s`,
                     animationFillMode: "both",
-                    flexDirection: isLeft ? "md:flex-row" : "md:flex-row-reverse",
                   }}
                 >
                   {/* Timeline Dot */}
